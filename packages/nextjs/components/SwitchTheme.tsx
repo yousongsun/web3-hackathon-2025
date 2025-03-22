@@ -8,14 +8,14 @@ export const SwitchTheme = ({ className }: { className?: string }) => {
   const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  const isDarkMode = resolvedTheme === "dark";
+  const isDarkMode = resolvedTheme === "light";
 
   const handleToggle = () => {
     if (isDarkMode) {
       setTheme("light");
       return;
     }
-    setTheme("dark");
+    setTheme("light");
   };
 
   useEffect(() => {
@@ -23,6 +23,8 @@ export const SwitchTheme = ({ className }: { className?: string }) => {
   }, []);
 
   if (!mounted) return null;
+
+  setTheme("light");
 
   return (
     <div className={`flex space-x-2 h-8 items-center justify-center text-sm ${className}`}>

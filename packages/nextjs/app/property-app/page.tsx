@@ -4,6 +4,7 @@ import { useState } from "react";
 import Card from "./components/Card";
 import DetailPanel from "./components/DetailPanel";
 import Sidebar from "./components/Sidebar";
+import {SwitchTheme} from "~~/components/SwitchTheme";
 
 const items = [
   {

@@ -23,7 +23,7 @@ export default function Card({ title, price, share, beds, baths, owners, image, 
       onClick={onClick}
     >
       <div className="bg-gray-400 h-40 rounded relative overflow-hidden">
-        <Image src={image} alt="House" layout="fill" objectFit="cover" objectPosition={"0px -50px"} />
+        <Image src={image} alt="House" layout="fill" objectFit="cover" />
       </div>
       <div className="mt-2">
         <h2 className="text-md font-medium text-black wrap">{title}</h2>
