@@ -5,9 +5,9 @@ export default function Sidebar() {
     <aside className="z-30 bg-white bg-opacity-80 backdrop-blur-lg shadow-lg w-64 p-4 flex flex-col justify-between rounded-r-2xl">
       <div className="space-y-2">
         {[
-          { label: "Exchange", icon: "📊", page: "/property-app" },
-          { label: "Properties", icon: "🏠", page: "/property-app/properties" },
-          { label: "Transactions", icon: "💰", page: "/property-app/transactions" },
+          { label: "Property Exchange", icon: "📊", page: "/property-app" },
+          { label: "My Properties", icon: "🏠", page: "/property-app/properties" },
+          { label: "Transaction History", icon: "💰", page: "/property-app/transactions" },
           { label: "Settings", icon: "⚙️", page: "/property-app/settings" },
         ].map(({ label, icon, page }) => (
           <Link key={label} href={page} legacyBehavior={true}>

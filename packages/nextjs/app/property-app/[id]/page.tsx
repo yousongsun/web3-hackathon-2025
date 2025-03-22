@@ -245,12 +245,7 @@ export default function PropertyDetails() {
           <h2 className="text-lg font-semibold flex items-center gap-2">
             <Users size={20} /> Lorem Ipsum
           </h2>
-          <p className="text-gray-600 mt-1">Total Shares: {property.ownership.totalShares}</p>
-          <p className="text-gray-600">Your Shares: {property.ownership.ownedShares}</p>
-          <p className="text-gray-600">
-            Ownership Percentage: <span className="font-medium">{property.ownership.ownershipPercentage}%</span>
-          </p>
-          <p className="text-gray-600">Initial Buy-In Price: ${property.ownership.buyInPrice.toLocaleString()}</p>
+          <p>Further property details here.</p>
         </div>
 
         {/* Call to Action */}
