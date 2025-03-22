@@ -51,6 +51,50 @@ const items = [
     description: "Currently co-owned by 9 people",
     image: "/house4.jpg",
   },
+  {
+    id: 5,
+    title: "Searching",
+    price: 0,
+    share: 0,
+    beds: 0,
+    baths: 0,
+    owners: 0,
+    description: "",
+    image: "load",
+  },
+  {
+    id: 6,
+    title: "Searching",
+    price: 0,
+    share: 0,
+    beds: 0,
+    baths: 0,
+    owners: 0,
+    description: "",
+    image: "load",
+  },
+  {
+    id: 7,
+    title: "Searching",
+    price: 0,
+    share: 0,
+    beds: 0,
+    baths: 0,
+    owners: 0,
+    description: "",
+    image: "load",
+  },
+  {
+    id: 8,
+    title: "Searching",
+    price: 0,
+    share: 0,
+    beds: 0,
+    baths: 0,
+    owners: 0,
+    description: "",
+    image: "load",
+  },
 ];
 
 export default function Home() {
@@ -61,8 +105,8 @@ export default function Home() {
       <div className="flex flex-1 overflow-hidden">
         <Sidebar />
         <div className={`flex-1`}>
-          <h2 className="text-4xl font-bold text-gray-300 m-8 mb-0 opacity-50 ml-[180px]">Exchange</h2>
-          <main className="p-6 overflow-auto grid grid-cols-3 gap-2 h-[80dvh] w-3/4 justify-self-center">
+          <h2 className="text-4xl font-bold text-gray-300 m-8 mb-0 opacity-50 ml-[30px]">Exchange</h2>
+          <main className="p-6 overflow-auto grid grid-cols-3 gap-2 h-[80dvh] w-full justify-self-center">
             {items.map(item => (
               <Card
                 key={item.id}
@@ -73,7 +117,13 @@ export default function Home() {
                 baths={item.baths}
                 owners={item.owners}
                 image={item.image}
-                onClick={() => setSelectedItem(item)}
+                onClick={
+                  item.title !== "Searching"
+                    ? () => setSelectedItem(item)
+                    : () => {
+                        return;
+                      }
+                }
                 selected={selectedItem?.id === item.id}
               />
             ))}
