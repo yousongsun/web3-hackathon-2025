@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from 'next/link';
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { AreaChart as AreaChartIcon, ChevronDown, ChevronUp, ShieldCheck, Users } from "lucide-react";
@@ -72,9 +73,9 @@ export default function PropertyDetails() {
 
   let propertyInfo = items.find((item) => item.id === Number(id));
 
-    if (!propertyInfo) {
-        return <div>Property not found</div>;
-    }
+  if (!propertyInfo) {
+    return <div>Property not found</div>;
+  }
 
   // Mock Property Data
   const property = {
@@ -253,9 +254,13 @@ export default function PropertyDetails() {
         </div>
 
         {/* Call to Action */}
-        <button className="mt-6 w-full bg-purple-600 text-white py-3 rounded-lg text-center font-medium hover:bg-purple-700 transition">
-          Join DAO & Invest
-        </button>
+        <Link href="/dao"> {/* Replace '/your-target-url' with the actual URL */}
+          <a>
+            <button className="mt-6 w-full bg-purple-600 text-white py-3 rounded-lg text-center font-medium hover:bg-purple-700 transition">
+              Join DAO & Invest
+            </button>
+          </a>
+        </Link>
       </div>
     </div>
   );

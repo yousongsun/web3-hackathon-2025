@@ -25,8 +25,8 @@ DAO for NZ Real Estate Investment is a decentralized governance platform where m
 - **Blockchain**: Ethereum
 - **Smart Contracts**: Solidity
 - **Development Framework**: Hardhat
-- **Frontend**: Next.js, Web3.js
-- **Backend (Optional)**: Node.js, Express, The Graph
+- **Frontend**: Next.js, Ether.js
+- **Backend (Optional)**: Node.js, The Graph
 - **Deployment**: Hardhat, IPFS
 - **Security**: OpenZeppelin
 

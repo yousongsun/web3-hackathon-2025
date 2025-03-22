@@ -16,6 +16,7 @@ import {
 import { BlockieAvatar, isENS } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
 import { getTargetNetworks } from "~~/utils/scaffold-eth";
+import { Link } from "lucide-react";
 
 const allowedNetworks = getTargetNetworks();
 

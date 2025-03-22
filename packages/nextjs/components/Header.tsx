@@ -91,13 +91,23 @@ export const Header = () => {
             </ul>
           )}
         </div>
-        <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
+        <Link href="/property-app" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
           <div className="flex relative  ">
             <HomeIcon className="h-10 w-10" />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold leading-tight">DAO Property</span>
-            <span className="text-xs">XX Dev Stack</span>
+            <span className="font-bold leading-tight">NZ Real Estate Investment</span>
+            <span className="text-xs">By Quaid and Yousong</span>
+          </div>
+        </Link>
+        <Link href="/property-app" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
+          <div className="flex flex-col">
+            <span className="font-bold leading-tight">Real Estate Management</span>
+          </div>
+        </Link>
+        <Link href="/dao" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
+          <div className="flex flex-col">
+            <span className="font-bold leading-tight">DAO</span>
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
