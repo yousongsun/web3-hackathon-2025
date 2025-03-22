@@ -1,6 +1,15 @@
+"use client"
+
+import { useState } from 'react';
 import Sidebar from "~~/app/property-app/components/Sidebar";
 
 export default function Transactions() {
+  const [response, setResponse] = useState('Status: Pending');
+
+  const transferToken = () => {
+    setResponse('Status: Success');
+  }
+
   return (
     <div className="flex flex-1 overflow-hidden">
       <Sidebar />
@@ -24,13 +33,14 @@ export default function Transactions() {
                 placeholder="Enter amount"
               />
             </div>
-            <button className="mt-4 w-full flex items-center justify-center gap-2 py-2 px-4 text-sm font-medium
+            <button onClick={transferToken}
+              className="mt-4 w-full flex items-center justify-center gap-2 py-2 px-4 text-sm font-medium
                      text-white bg-purple-600 hover:bg-purple-700 transition rounded-lg">
-              Send Token
+              Transfer
             </button>
             <div className="mt-4 p-2 text-center rounded">
               {/* Placeholder for status message */}
-              Status: Pending
+              {response}
             </div>
           </div>
         </div>
