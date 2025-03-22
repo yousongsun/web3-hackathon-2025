@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract NzInvestDao {
+contract NzInvestDao2 {
     // Struct to represent a proposal
     struct Proposal {
         uint256 id;
@@ -21,9 +21,6 @@ contract NzInvestDao {
 
     // Mapping to store member balances (governance tokens)
     mapping(address => uint256) public balances;
-
-    // Total supply of governance tokens
-    uint256 public totalTokenSupply;
 
     // Event to log proposal creation
     event ProposalCreated(uint256 id, string description);
@@ -47,7 +44,6 @@ contract NzInvestDao {
         for (uint256 i = 0; i < _initialMembers.length; i++) {
             require(_initialBalances[i] > 0, "Balance must be greater than 0");
             balances[_initialMembers[i]] = _initialBalances[i];
-            totalTokenSupply += _initialBalances[i]; // Update the total supply
         }
     }
 
@@ -89,17 +85,6 @@ contract NzInvestDao {
 
     // Helper function to get the total supply of governance tokens
     function totalSupply() public view returns (uint256) {
-        return totalTokenSupply;
-    }
-
-    // Function to update a member's balance (if needed, for example during transfers)
-    function updateBalance(address _member, uint256 _newBalance) public onlyMembers {
-        uint256 oldBalance = balances[_member];
-        require(_newBalance > 0, "New balance must be greater than 0");
-
-        // Update total supply by removing the old balance and adding the new one
-        totalTokenSupply = totalTokenSupply - oldBalance + _newBalance;
-
-        balances[_member] = _newBalance;
+        return address(this).balance;
     }
 }
