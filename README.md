@@ -4,8 +4,6 @@ Our **Decentralized Autonomous Organization (DAO)** built on Ethereum that allow
 
 ---
 
----
-
 ## Introduction
 
 DAO for NZ Real Estate Investment is a decentralized governance platform where members can propose, vote on, and execute decisions using smart contracts on the Ethereum blockchain. It is designed to be transparent, secure, and accessible to all members.
