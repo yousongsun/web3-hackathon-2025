@@ -14,7 +14,7 @@ export default function Transactions() {
       const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
         headers: {
-          "Authorization": "Bearer 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",
+          "Authorization": "Bearer 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",
           "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
           "X-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
           "Content-Type": "application/json"
