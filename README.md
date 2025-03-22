@@ -4,6 +4,14 @@ Our **Decentralized Autonomous Organization (DAO)** built on Ethereum that allow
 
 ---
 
+## AI DAO account
+
+We use 0x90A28F6f9f25CBF2aff22370C3509f4C93516CBe as the AI controlled governance account, the private key for this token address is:
+```
+c86c18639f84c978d81e4e4b2d5f13db4a240145ec3ee63f12f27c71e5790adb
+```
+---
+
 ## Introduction
 
 DAO for NZ Real Estate Investment is a decentralized governance platform where members can propose, vote on, and execute decisions using smart contracts on the Ethereum blockchain. It is designed to be transparent, secure, and accessible to all members.
