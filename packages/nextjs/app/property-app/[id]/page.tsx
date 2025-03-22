@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from 'next/link';
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { AreaChart as AreaChartIcon, ChevronDown, ChevronUp, ShieldCheck, Users } from "lucide-react";
+import {AreaChart as AreaChartIcon, ChevronDown, ChevronUp, Copy, ShieldCheck, Users} from "lucide-react";
 import {
   Area,
   AreaChart,
@@ -79,6 +79,7 @@ export default function PropertyDetails() {
 
   // Mock Property Data
   const property = {
+    hash: "0xF36b...eE74",
     ownership: {
       totalShares: 100,
       ownedShares: 10,
@@ -116,12 +117,16 @@ export default function PropertyDetails() {
       <div className="container mx-auto p-6 max-w-4xl">
         {/* Property Image */}
         <div className="relative h-64 w-full rounded-lg overflow-hidden">
-          <Image src={propertyInfo.image} alt={propertyInfo.title} layout="fill" objectFit="cover" />
+          <Image src={propertyInfo.image} alt={propertyInfo.title} layout="fill" objectFit="cover"/>
         </div>
 
         {/* Title & Price */}
         <h1 className="text-2xl font-bold text-gray-900 mt-4">{propertyInfo.title}</h1>
-        <p className="text-lg text-purple-600 font-semibold">${propertyInfo.price.toLocaleString()}</p>
+        <div className={`flex flex-row align-middle`}>
+          <h3 className={`text-md text-gray-400`}>{property.hash}</h3>
+          <Copy className={`w-4 ml-1 hover:cursor-pointer`} color={"#afafaf"}/>
+        </div>
+        <p className="text-lg text-purple-600 font-semibold -mt-1">${propertyInfo.price.toLocaleString()} | 10%</p>
 
         {/* Description */}
         <p className="text-gray-700 mt-3">{propertyInfo.description}</p>
@@ -131,10 +136,10 @@ export default function PropertyDetails() {
             {/* Ownership Details */}
             <div className="mt-6 mr-6 bg-white shadow-lg rounded-lg p-4">
               <h2 className="text-lg font-semibold flex items-center gap-2">
-                <Users size={20} /> Ownership Information
+                <Users size={20}/> Ownership Information
               </h2>
               <p className="text-gray-600 mt-1">Total Shares: {property.ownership.totalShares}</p>
-              <p className="text-gray-600">Your Shares: {property.ownership.ownedShares}</p>
+              <p className="text-gray-600">Proposed Shares: {property.ownership.ownedShares}</p>
               <p className="text-gray-600">
                 Ownership Percentage: <span className="font-medium">{property.ownership.ownershipPercentage}%</span>
               </p>
@@ -144,11 +149,11 @@ export default function PropertyDetails() {
             {/* DAO Governance */}
             <div className="mt-6 mr-6 bg-white shadow-lg rounded-lg p-4">
               <h2 className="text-lg font-semibold flex items-center gap-2">
-                <ShieldCheck size={20} /> DAO Terms & Governance
+                <ShieldCheck size={20}/> DAO Terms & Governance
               </h2>
               <ul className="list-disc pl-5 text-gray-600 mt-2">
                 {property.daoTerms.map((term, index) => (
-                  <li key={index}>{term}</li>
+                    <li key={index}>{term}</li>
                 ))}
               </ul>
             </div>
@@ -157,7 +162,7 @@ export default function PropertyDetails() {
             {/* Financial Overview with Area Chart */}
             <div className="mt-6 bg-white shadow-lg rounded-lg p-4">
               <h2 className="text-lg font-semibold flex items-center gap-2">
-                <AreaChartIcon size={20} /> Financial Overview
+                <AreaChartIcon size={20}/> Financial Overview
               </h2>
               <p className="text-gray-600 mt-1">Monthly Revenue: ${property.financials.revenue.toLocaleString()}</p>
               <p className="text-gray-600">Monthly Expenses: ${property.financials.expenses.toLocaleString()}</p>
@@ -171,31 +176,31 @@ export default function PropertyDetails() {
                   <AreaChart data={property.financials.history}>
                     <defs>
                       <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#4F46E5" stopOpacity={0.8} />
-                        <stop offset="95%" stopColor="#4F46E5" stopOpacity={0} />
+                        <stop offset="5%" stopColor="#4F46E5" stopOpacity={0.8}/>
+                        <stop offset="95%" stopColor="#4F46E5" stopOpacity={0}/>
                       </linearGradient>
                       <linearGradient id="colorExpenses" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#E53E3E" stopOpacity={0.8} />
-                        <stop offset="95%" stopColor="#E53E3E" stopOpacity={0} />
+                        <stop offset="5%" stopColor="#E53E3E" stopOpacity={0.8}/>
+                        <stop offset="95%" stopColor="#E53E3E" stopOpacity={0}/>
                       </linearGradient>
                     </defs>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="month" />
-                    <YAxis />
-                    <Tooltip />
+                    <CartesianGrid strokeDasharray="3 3"/>
+                    <XAxis dataKey="month"/>
+                    <YAxis/>
+                    <Tooltip/>
                     <Area
-                      type="monotone"
-                      dataKey="revenue"
-                      stroke="#4F46E5"
-                      fill="url(#colorRevenue)"
-                      strokeWidth={2}
+                        type="monotone"
+                        dataKey="revenue"
+                        stroke="#4F46E5"
+                        fill="url(#colorRevenue)"
+                        strokeWidth={2}
                     />
                     <Area
-                      type="monotone"
-                      dataKey="expenses"
-                      stroke="#E53E3E"
-                      fill="url(#colorExpenses)"
-                      strokeWidth={2}
+                        type="monotone"
+                        dataKey="expenses"
+                        stroke="#E53E3E"
+                        fill="url(#colorExpenses)"
+                        strokeWidth={2}
                     />
                   </AreaChart>
                 </ResponsiveContainer>
@@ -205,53 +210,56 @@ export default function PropertyDetails() {
             {/* Transaction History Dropdown */}
             <div className="mt-6 bg-white shadow-lg rounded-lg p-4 relative">
               <button
-                className="w-full flex items-center justify-between text-lg font-semibold text-gray-900"
-                onClick={() => setShowTransactions(!showTransactions)}
+                  className="w-full flex items-center justify-between text-lg font-semibold text-gray-900"
+                  onClick={() => setShowTransactions(!showTransactions)}
               >
                 Transaction History
-                {showTransactions ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                {showTransactions ? <ChevronUp size={20}/> : <ChevronDown size={20}/>}
               </button>
 
               {showTransactions && (
-                <div className="absolute left-0 top-full w-full bg-white shadow-lg border rounded-lg p-4 z-10">
-                  <table className="w-full text-left border-collapse">
-                    <thead>
+                  <div className="absolute left-0 top-full w-full bg-white shadow-lg border rounded-lg p-4 z-10">
+                    <table className="w-full text-left border-collapse">
+                      <thead>
                       <tr className="border-b">
                         <th className="py-2 text-gray-600">Date</th>
                         <th className="py-2 text-gray-600">Type</th>
                         <th className="py-2 text-gray-600">Amount</th>
                       </tr>
-                    </thead>
-                    <tbody>
+                      </thead>
+                      <tbody>
                       {property.transactions.map((txn, index) => (
-                        <tr key={index} className="border-b">
-                          <td className="py-2 text-gray-700">{txn.date}</td>
-                          <td className="py-2 text-gray-700">{txn.type}</td>
-                          <td className={`py-2 font-medium ${txn.amount < 0 ? "text-red-500" : "text-green-600"}`}>
-                            ${txn.amount.toLocaleString()}
-                          </td>
-                        </tr>
+                          <tr key={index} className="border-b">
+                            <td className="py-2 text-gray-700">{txn.date}</td>
+                            <td className="py-2 text-gray-700">{txn.type}</td>
+                            <td className={`py-2 font-medium ${txn.amount < 0 ? "text-red-500" : "text-green-600"}`}>
+                              ${txn.amount.toLocaleString()}
+                            </td>
+                          </tr>
                       ))}
-                    </tbody>
-                  </table>
-                </div>
+                      </tbody>
+                    </table>
+                  </div>
               )}
             </div>
           </div>
         </div>
 
         {/* Ownership Details */}
-        <div className="mt-6 mr-6 bg-white shadow-lg rounded-lg p-4">
+        <div className="mt-6 mr-6 bg-white shadow-lg rounded-lg p-4 w-full">
           <h2 className="text-lg font-semibold flex items-center gap-2">
-            <Users size={20} /> Lorem Ipsum
+            <Users size={20}/> AI Assistance
           </h2>
-          <p>Further property details here.</p>
+          <div className={`w-[90%] bg-gray-200 h-20 rounded-md`}>
+            <h2 className={`text-gray-400 p-6`}>AI Generated Summary of Property History...</h2>
+          </div>
         </div>
 
         {/* Call to Action */}
         <Link href="/dao"> {/* Replace '/your-target-url' with the actual URL */}
           <a>
-            <button className="mt-6 w-full bg-purple-600 text-white py-3 rounded-lg text-center font-medium hover:bg-purple-700 transition">
+            <button
+                className="mt-6 w-full bg-purple-600 text-white py-3 rounded-lg text-center font-medium hover:bg-purple-700 transition">
               Join DAO & Invest
             </button>
           </a>
