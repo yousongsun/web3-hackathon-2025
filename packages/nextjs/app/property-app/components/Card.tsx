@@ -1,5 +1,6 @@
 // app/components/Card.tsx
 import Image from "next/image";
+import "../../globals.css";
 import { Bath, Bed, User } from "lucide-react";
 
 type CardProps = {
@@ -17,13 +18,17 @@ type CardProps = {
 export default function Card({ title, price, share, beds, baths, owners, image, onClick, selected }: CardProps) {
   return (
     <div
-      className={`bg-white shadow rounded-lg cursor-pointer p-4 max-h-[32dvh] hover:scale-105 transition-all select-none ${
+      className={`bg-white shadow rounded-lg cursor-pointer p-4 max-h-[50dvh] hover:scale-105 transition-all select-none ${
         selected ? "border-2 border-purple-500" : ""
       }`}
       onClick={onClick}
     >
-      <div className="bg-gray-400 h-40 rounded relative overflow-hidden">
-        <Image src={image} alt="House" layout="fill" objectFit="cover" />
+      <div className="shimmer bg-gray-400 h-40 rounded relative overflow-hidden">
+        {image !== "load" ? (
+          <Image src={image} alt="House" layout="fill" objectFit="cover" />
+        ) : (
+          <div className="shimmer w-full bg-gray-300 rounded shadow"></div>
+        )}
       </div>
       <div className="mt-2">
         <h2 className="text-md font-medium text-black wrap">{title}</h2>

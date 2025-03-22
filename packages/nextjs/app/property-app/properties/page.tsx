@@ -2,13 +2,15 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, ShieldCheck, Users } from "lucide-react";
+import { ChevronLeft, ChevronRight, Copy, ShieldCheck, Users } from "lucide-react";
 import Sidebar from "~~/app/property-app/components/Sidebar";
+import SortDropdown from "~~/app/property-app/components/Dropdown";
 
 const mockProperties = [
   {
     id: 1,
     title: "Luxury Beachfront Villa",
+    hash: "0xF36b...eE74",
     price: 950000,
     description: "A stunning villa with breathtaking ocean views and modern architecture.",
     image: "/house1.webp",
@@ -27,6 +29,7 @@ const mockProperties = [
   {
     id: 2,
     title: "Downtown Penthouse Suite",
+    hash: "0xF36b...eE74",
     price: 1250000,
     description: "A luxurious penthouse with stunning city skyline views and exclusive amenities.",
     image: "/house1.webp",
@@ -45,6 +48,7 @@ const mockProperties = [
   {
     id: 3,
     title: "Countryside Estate",
+    hash: "0xF36b...eE74",
     price: 800000,
     description: "A serene estate surrounded by nature, perfect for those seeking peace and tranquility.",
     image: "/house1.webp",
@@ -79,7 +83,7 @@ export default function PropertiesList() {
     <div className="flex flex-1 overflow-hidden">
       <Sidebar />
       <div className="container mx-auto p-6 max-w-4xl relative">
-        <h1 className="text-3xl font-bold text-gray-900 mb-6">My Properties</h1>
+        <h1 className="text-3xl font-bold text-gray-300 mb-6">My Properties</h1>
 
         {/* Navigation Buttons */}
         <button
@@ -118,6 +122,10 @@ export default function PropertiesList() {
                     </div>
                     <div>
                       <h2 className="text-xl font-semibold text-gray-900">{property.title}</h2>
+                      <div className={`flex flex-row align-middle`}>
+                        <h3 className={`text-md text-gray-400`}>{property.hash}</h3>
+                        <Copy className={`w-4 ml-1 hover:cursor-pointer`} color={"#afafaf"} />
+                      </div>
                       <p className="text-lg text-purple-600 font-semibold">${property.price.toLocaleString()}</p>
                       <p className="text-gray-700 mt-2">{property.description}</p>
                     </div>
@@ -158,7 +166,7 @@ export default function PropertiesList() {
 
         {/* Call to Action */}
         <button className="mt-6 w-full bg-purple-600 text-white py-3 rounded-lg text-center font-medium hover:bg-purple-700 transition">
-          View Details
+          Go To Property DAO
         </button>
       </div>
     </div>

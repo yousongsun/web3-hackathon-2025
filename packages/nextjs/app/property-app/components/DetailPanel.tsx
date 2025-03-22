@@ -2,18 +2,19 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Copy } from "lucide-react";
 
 type DetailProps = {
   id: number;
   title: string;
+  hash: string;
   price: number;
   share: number;
   image: string;
   description: string;
 };
 
-export default function DetailPanel({ id, title, price, share, image, description }: DetailProps) {
+export default function DetailPanel({ id, title, hash, price, share, image, description }: DetailProps) {
   const router = useRouter();
 
   return (
@@ -25,8 +26,14 @@ export default function DetailPanel({ id, title, price, share, image, descriptio
 
       {/* Property Info */}
       <div className="mt-4">
-        <h2 className="text-2xl font-semibold text-black -mb-2">{title}</h2>
-        <p className="text-lg text-gray-700">${price.toLocaleString()} | {share}%</p>
+        <h2 className="text-2xl font-semibold text-black">{title}</h2>
+        <div className={`flex flex-row align-middle`}>
+          <h3 className={`text-md text-gray-400`}>{hash}</h3>
+          <Copy className={`w-4 ml-1 hover:cursor-pointer`} color={"#afafaf"} />
+        </div>
+        <p className="text-lg text-gray-700">
+          ${price.toLocaleString()} | {share}%
+        </p>
         <p className="text-sm mt-2 text-gray-400">{description}</p>
 
         {/* More Details Button */}

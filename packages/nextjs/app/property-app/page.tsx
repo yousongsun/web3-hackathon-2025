@@ -5,11 +5,13 @@ import Card from "./components/Card";
 import DetailPanel from "./components/DetailPanel";
 import Sidebar from "./components/Sidebar";
 import {SwitchTheme} from "~~/components/SwitchTheme";
+import SortDropdown from "~~/app/property-app/components/Dropdown";
 
 const items = [
   {
     id: 1,
     title: "2/3A Waverley St, Mt Wellington, Auckland",
+    hash: "0xF36b...eE74",
     price: 92340,
     share: 10,
     beds: 3,
@@ -21,6 +23,7 @@ const items = [
   {
     id: 2,
     title: "12 Whaihirere Dr, Waiuku, Auckland",
+    hash: "0xF36b...eE74",
     price: 162150,
     share: 20,
     beds: 4,
@@ -32,6 +35,7 @@ const items = [
   {
     id: 3,
     title: "64 Trafaar St, Onehunga, Auckland",
+    hash: "0xF36b...eE74",
     price: 18426,
     share: 2,
     beds: 5,
@@ -43,6 +47,7 @@ const items = [
   {
     id: 4,
     title: "421 Mt Eden Rd, Mt Eden, Auckland",
+    hash: "0xF36b...eE74",
     price: 84260,
     share: 8,
     beds: 6,
@@ -50,6 +55,50 @@ const items = [
     owners: 14,
     description: "Currently co-owned by 9 people",
     image: "/house4.jpg",
+  },
+  {
+    id: 5,
+    title: "Searching",
+    price: 0,
+    share: 0,
+    beds: 0,
+    baths: 0,
+    owners: 0,
+    description: "",
+    image: "load",
+  },
+  {
+    id: 6,
+    title: "Searching",
+    price: 0,
+    share: 0,
+    beds: 0,
+    baths: 0,
+    owners: 0,
+    description: "",
+    image: "load",
+  },
+  {
+    id: 7,
+    title: "Searching",
+    price: 0,
+    share: 0,
+    beds: 0,
+    baths: 0,
+    owners: 0,
+    description: "",
+    image: "load",
+  },
+  {
+    id: 8,
+    title: "Searching",
+    price: 0,
+    share: 0,
+    beds: 0,
+    baths: 0,
+    owners: 0,
+    description: "",
+    image: "load",
   },
 ];
 
@@ -61,8 +110,11 @@ export default function Home() {
       <div className="flex flex-1 overflow-hidden">
         <Sidebar />
         <div className={`flex-1`}>
-          <h2 className="text-4xl font-bold text-gray-300 m-8 mb-0 opacity-50 ml-[180px]">Exchange</h2>
-          <main className="p-6 overflow-auto grid grid-cols-3 gap-2 h-[80dvh] w-3/4 justify-self-center">
+          <div className={`flex flex-row justify-between align-middle w-full m-8 mb-0 `}>
+            <h2 className="text-4xl font-bold text-gray-300 opacity-50 ml-[30px]">Exchange</h2>
+            <SortDropdown />
+          </div>
+          <main className="p-6 overflow-auto grid grid-cols-3 gap-2 h-[80dvh] w-full justify-self-center">
             {items.map(item => (
               <Card
                 key={item.id}
@@ -73,7 +125,13 @@ export default function Home() {
                 baths={item.baths}
                 owners={item.owners}
                 image={item.image}
-                onClick={() => setSelectedItem(item)}
+                onClick={
+                  item.title !== "Searching"
+                    ? () => setSelectedItem(item)
+                    : () => {
+                        return;
+                      }
+                }
                 selected={selectedItem?.id === item.id}
               />
             ))}
@@ -84,6 +142,7 @@ export default function Home() {
             <DetailPanel
               id={selectedItem.id}
               title={selectedItem.title}
+              hash={selectedItem.hash}
               price={selectedItem.price}
               share={selectedItem.share}
                 image={selectedItem.image}
