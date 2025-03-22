@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract SimpleDao {
+contract NzInvestDao {
     // Struct to represent a proposal
     struct Proposal {
         uint256 id;
